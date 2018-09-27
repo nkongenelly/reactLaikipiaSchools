@@ -2,54 +2,31 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 class Product extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      items: []
-    };
-  }
-
-  componentDidMount() {
-    fetch("https://ecommerce-nelly.azurewebsites.net/buyerOnlyPage")
-      .then(res => res.json())
-      .then(
-        result => {
-          this.setState({
-            isLoaded: true,
-            items: result.items
-          });
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        error => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      );
-  }
-
   render() {
-    const { error, isLoaded, items } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
-      return (
-        <ul>
-          {items.map(item => (
-            <li key={item.name}>
-              {item.name} {item.price}
-            </li>
-          ))}
-        </ul>
-      );
-    }
+    return (
+      <React.Fragment>
+        <div className="card">
+          <img
+            className="card-img-top"
+            src=".../100px180/"
+            alt="Card image cap"
+          />
+          <div className="card-body">
+            <h5 className="card-title">
+              Product Name :{this.props.product.productName}
+            </h5>
+            <p>Product Name :{this.props.product.productName} </p>
+            <p>Product Price KES :{this.props.product.productPrice} </p>
+            <button
+              onClick={() => this.props.onAddCart(this.props.product)}
+              className="btn btn-primary m-2"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </React.Fragment>
+    );
   }
 }
 
