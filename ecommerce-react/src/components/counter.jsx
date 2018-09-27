@@ -12,6 +12,9 @@ class Counter extends Component {
         <span className="m-2">{this.props.counter.productName}</span>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <span className="m-2">{this.props.counter.productPrice}</span>
+        <span className="m-2">
+          {this.props.counter.productPrice * this.formatCount()}
+        </span>
         <button
           onClick={() => this.props.onIncrement(this.props.counter)}
           className="btn btn-secondary btn-sm m-2"

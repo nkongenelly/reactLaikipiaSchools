@@ -8,7 +8,9 @@ class Product extends Component {
         <div className="card">
           <img
             className="card-img-top"
-            src=".../100px180/"
+            src={`https://ecommerce-nelly.azurewebsites.net/images/${
+              this.props.product.productImage
+            }`}
             alt="Card image cap"
           />
           <div className="card-body">

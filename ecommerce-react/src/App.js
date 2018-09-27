@@ -41,7 +41,7 @@ class App extends Component {
       id: product.id,
       productName: product.productName,
       productPrice: product.productPrice,
-      value: 0
+      value: 1
     };
     counters.push(toPush);
     this.setState({ counters });
@@ -58,7 +58,9 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar totalCounters={this.state.counters.filter(c => c > 0).length} />
+        <NavBar
+          totalCounters={this.state.counters.filter(c => c.value > 0).length}
+        />
         <div className="container">
           <div className="row">
             <div className="col-sm-07">
@@ -105,7 +107,8 @@ class App extends Component {
               id: result.id,
               productName: result.product_name,
               productPrice: result.product_price,
-              value: 0
+              value: 1,
+              productImage: result.product_image
             };
             products.push(toPush);
             console.log(products);
