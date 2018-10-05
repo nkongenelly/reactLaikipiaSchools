@@ -43,9 +43,14 @@ class App extends Component {
       productPrice: product.productPrice,
       value: 1
     };
+    // console.log(counters.includes(toPush.id));
+    // counters.map(c => {
+    //   // if (c.id != toPush.id)
+    //   console.log(c.id);
+    //   console.log(toPush.id);
+    // });
     counters.push(toPush);
     this.setState({ counters });
-    console.log(counters.length);
   };
   handleDecrement = counter => {
     const counters = [...this.state.counters]; //3 dots means clone the object
