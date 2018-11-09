@@ -28,8 +28,7 @@
         @endif
            
     
-    </table>
-    
+    </table>    
 
 @endsection
 

@@ -21,6 +21,8 @@ use App\FeatureProduct;
 Route::get('/', function () {
     return view('welcome');
 });
+//USSD
+Route::get('/ussd', 'UssdController@index');
 //Categories
 
 Route::get('/categories', 'CategoryController@index');
@@ -71,6 +73,8 @@ Route::patch('/products/update/{id}', 'ProductController@update');
 Route::get('/products/delete/{id}', 'ProductController@destroy');
 //Buyer Products
 Route::get('/productsbuyer', 'ProductController@indexBuyer');//for Buyer t view products that are in stock
+
+Route::get('/productsbuyers', 'ProductController@indexBuyers');
 
 Route::get('/productss/create', 'ProductController@create');  
 
@@ -131,7 +135,7 @@ Route::get('/orderscomplete/{id}/{order}/{product}', 'OrderController@orderscomp
 
 Route::get('/orders/cart/{id}/{product}', 'OrderController@cart');//for add to cart table format
 //for add to cart table format
-Route::post('/orders/cart/{id}', 'OrderController@getAddToCart');//to add to cart
+Route::get('/orders/cart/{id}', 'OrderController@getAddToCart');//to add to cart
 
 Route::get('/orders/create/{id}', 'OrderController@create');//for status placed to specify quantities before placing order to seller
 

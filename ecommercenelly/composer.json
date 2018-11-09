@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": "^7.1.3",
+        "africastalking/africastalking": "^2.0",
         "consoletvs/charts": "5.*",
         "fideloper/proxy": "^4.0",
         "fx3costa/laravelchartjs": "^2.5",

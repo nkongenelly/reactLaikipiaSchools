@@ -1,14 +1,14 @@
 @extends('layoutsSeller')
 
 @section('content')
-    <form action="/productfeatures/update/{{$productfeature->id}}" method="POST" class="form-horizontal">
+    <form action="/productfeatures/update/{{ $pfeatureid }}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
         {{  method_field('PATCH') }}
-        <input type="hidden" class="form-control" value="{{ $product->id }}" name="product_id">
+        <input type="hidden" class="form-control" value="{{ $id }}" name="product_id">
         <a href="/features/create" class="btn btn-warning">Add Feature</a><hr>
         <div class="form-group">
             <select name="feature_id">
-                <option value="{{$featuressy}}">{{$features['feature_name']}}</option>
+                <option value="{{$productfeature}}">{{$featurename}}</option>
                 
                    
                     @foreach($featuresall as $featureall){
@@ -16,10 +16,13 @@
                     @endforeach
                       
             </select>
-            <input type="hidden" name="user_id" value="{{ $user['id'] }}">
+            <input type="hidden" name="user_id" value="{{ $user }}">
         </div>
         <div class="form-control">
-        <a href="/products/features/{{ $product->id }}" class="btn btn-primary">Back</a>
+            <input type="text" name="name" value="{{ $pfeaturename }}">
+        </div>
+        <div class="form-control">
+        <a href="/products/features/{{ $id }}" class="btn btn-primary">Back</a>
             <button type="submit" class="btn btn-primary">Edit Feature</button>
            
         </div>

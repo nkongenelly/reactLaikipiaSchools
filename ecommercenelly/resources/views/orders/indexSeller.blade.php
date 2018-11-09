@@ -17,7 +17,7 @@
                         <a href="/orderviewsingle/{{ $order['id'] }}" class="btn btn-warning">View</a>    
                         </td>
                         <td>
-                            <a href="/orderscomplete/{{ $order['id'] }}/$order['user_id'] }}" class="btn btn-outline-success my-2 my-sm-0">Complete Orders</a>
+                            <a href="/orderviewsingle/{{ $order['id'] }}" class="btn btn-outline-success my-2 my-sm-0">Complete Orders</a>
                         </td>
                         </tr>
                 @endforeach

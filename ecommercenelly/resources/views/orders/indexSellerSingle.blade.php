@@ -15,7 +15,7 @@
                             <td>{{ $order->quantity}}</td>
                             <td>{{ $order->price }}</td>
                             <td>
-                                <a href="/orderscomplete/{{ $order->user_id }}/{{ $order->order_id }}" class="btn btn-outline-success my-2 my-sm-0">Complete Orders</a>
+                                <a href="/orderscomplete/{{ $order->user_id }}/{{ $order->order_id }}/{{ $order->product_id }} " class="btn btn-outline-success my-2 my-sm-0">Complete Orders</a>
                             </td>
                         
                     </tr>

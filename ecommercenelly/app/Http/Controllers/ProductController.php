@@ -25,6 +25,51 @@ class ProductController extends Controller
     // public function __constructor(){
     //     $this->middleware('seller');
     // }
+    public function indexBuyers(Request $request)
+    { 
+        $products = Product::where([
+                            ['product_status','1'],
+                            ['Product_quantity','>','0'],
+                            ])
+                             ->get(); 
+                            //  dd($products);
+          if(array($products)){
+        if($category_id = request('category_name')){
+            $productss = Category::find($category_id);
+        $products = $productss->products;
+        // dd($products);
+        }
+        foreach($products as $product){
+            $category = $product->category_id;
+            // $countproducts = Product::where('category_id',$category)->count();
+            // $archives = Category::find($category);
+        }
+        }
+            $archives = Category::all();
+            $oldCart = Session::has('cart') ? Session::get('cart') : null;
+            $cart = new Cart($oldCart);
+            $request->session()->put('cart', $cart);
+            // dd($cart);
+            $orderid =0;
+            if($cart->items !=null){
+                foreach($cart->items as $item){
+                    $orderid1 = $item['order_id'];
+                }
+                $orderid = $orderid1;
+                return new Response(view('products.indexpBuyer',compact('products','archives','productss','cart','orderid'))->with('role','BUYER'));
+            }else{
+                $allorders= Order::latest();
+                foreach($allorders as $oneorder){
+                    $orderid = $oneorder->id;
+                }
+                echo ($products);
+                // $orderid = $orderid2;
+                // return new Response(view('products.indexpBuyer',compact('products','archives','productss','cart','orderid'))->with('role','BUYER'));
+            }
+        // }
+        // return view('products.indexpBuyer',compact('products','archives','productss'));
+        
+        } 
     public function index($id)
     {
         $user = auth()->user()->find($id);
@@ -265,8 +310,16 @@ class ProductController extends Controller
      */
     public function features(Request $request,$id)
     {
-// dd("pfeatures");
+        $products = Product::where(['products.user_id'=>auth()->user()->id, 'products.id'=>$id])
+                        ->join('feature_product','feature_product.product_id', '=','products.id')
+                        ->join('features','features.id','=','feature_product.feature_id')
+                        ->select('products.*')
+                        // ->select('products.product_name','features.feature_name')
+                        ->get();
+        // $product = Product::where(['user_id'=>auth()->user()->id,'id'=>$id])->get();
+        // dd($product);
         $product = Product::where('user_id',auth()->user()->id)->find($id);
+        // dd($product);
         // dd($product['id']);
         $user = auth()->user();
         

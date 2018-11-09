@@ -15,6 +15,9 @@
                
             </select>
         </div>
+        <div class="form-control">
+            <input type="string" class="form-control"  name="name">
+        </div>
             <input type="hidden" name="user_id" value="{{ $user }}">
  
         <div class="form-control">

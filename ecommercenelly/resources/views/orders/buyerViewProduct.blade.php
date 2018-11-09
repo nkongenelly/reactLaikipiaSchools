@@ -35,6 +35,29 @@
               
        </div>
     </div>
+    <div>
     @endforeach
+    @foreach($productsthis as $product)
+         @foreach($product->features as $relatedfeature)
+            <ol>
+                <li>{{ $relatedfeature->feature_name}} :
+                    @foreach($relatedfeature as $relatedfeatureone)
+                    <?php
+                    $onefeature = $relatedfeature->id;
+                $pfeaturethiss = DB::table('feature_product')->where('feature_id',$onefeature)->get();
+                foreach($pfeaturethiss as $pfeaturethis)
+                {
+                    $relatedfeatureone = $pfeaturethis->name;
+                // dd($pfeaturethis->name);
+                }
+                ?>
+                    {{ $relatedfeatureone}}
+                    @endforeach
+                </li>
+            </ol>
+        @endforeach
+     @endforeach
+    </div>
+
 @endsection
 

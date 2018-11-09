@@ -15,12 +15,12 @@
                     <td>{{ $product['id'] }}</td>
                     <td>{{ $product['product_name'] }}</td>
                     <td colspan="3">
-                    @foreach($features as $feature)
+                    @foreach($pfeatures as $pfeature)
                         <ol>
-                            <ul>{{ $feature['feature_name'] }}
+                            <ul>{{ $featurename }} : {{ $pfeature->name }}
                     
-                                <a href="/productfeaturesedit/{{ $product['id'] }}/{{ $feature['id'] }}" class="btn btn-warning">Edit</a>
-                                <a href="/productfeaturesdelete/{{ $product['id'] }}/{{ $feature['id'] }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product feature?')">Delete</a>
+                                <a href="/productfeaturesedit/{{ $product['id'] }}/{{ $pfeature->id }}" class="btn btn-warning">Edit</a>
+                                <a href="/productfeaturesdelete/{{ $product['id'] }}/{{ $pfeature->id }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product feature?')">Delete</a>
                             </ul>
                          
                         </ol>
