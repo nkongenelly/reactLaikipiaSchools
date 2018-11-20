@@ -9,7 +9,6 @@ class Progress extends Component {
     total: 200
   };
   calculateBalance() {
-    console.log("balance calculator");
     var balance =
       this.state.total -
       (this.state.dignityKit.value +

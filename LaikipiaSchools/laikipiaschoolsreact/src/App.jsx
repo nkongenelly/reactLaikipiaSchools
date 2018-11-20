@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Maps from "./components/Maps";
-import SidePage from "./components/SidePage";
+import MapMarkers from "./components/MapMarkers";
+// import SidePage from "./components/SidePage";
 import Progress from "./components/Progress";
 
 class App extends Component {
@@ -11,8 +11,8 @@ class App extends Component {
     return (
       <React.Fragment>
         <Progress />
-        <Maps />
-        <SidePage />
+        <MapMarkers />
+        {/* <SidePage /> */}
       </React.Fragment>
     );
   }
