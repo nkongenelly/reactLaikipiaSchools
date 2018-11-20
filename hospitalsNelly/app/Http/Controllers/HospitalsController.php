@@ -47,6 +47,43 @@ class HospitalsController extends Controller
     } 
     }
 }
+public function registerBusiness()
+{
+   $getChat = file_get_contents('php://input');
+   dd($getChat);
+   $chat = json_decode($getChat, true);
+
+   if(is_array($chat) && (count($chat)>0)){
+
+    
+    $mobileNumber = $chat[0]["mobileNumber"];
+    $name = $chat[0]["name"];
+    $message = $chat[0]["message"];
+   
+
+   if(stripos($message, 'bomb') !==false){
+        $send = $name . ", such words are not permitted here";
+        $url = "https://prod-10.westeurope.logic.azure.com:443/workflows/8f843088ed4a4f1c811b2031ce984ce7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=DDgoID5HVZtQ0r_yBcmU3fy7iiyjw5468xd9OgP6OOs";
+        $text = array("message" => $send);
+        $message = json_encode($text);
+   
+
+   $ch = curl_init($url);
+   curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+   curl_setopt($ch, CURLOPT_POSTFIELDS, $message);
+   curl_setopt($ch, CURLOPT_HEADER, true);     
+   curl_setopt($ch, CURLOPT_HTTPHEADER,
+           array('Content-Type:application/json',
+                  'Content-Length: ' . strlen($message))
+           );
+
+$result = curl_exec($ch);
+curl_close($ch);
+} 
+}
+}
+
+
 
     public function webservice(){
         $config = array(

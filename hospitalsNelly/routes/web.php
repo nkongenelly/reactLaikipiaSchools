@@ -17,6 +17,8 @@ Route::get('/webservice', 'HospitalsController@webservice');
 
 Route::post('/getChat', 'HospitalsController@getChat');
 
+Route::post('/registerBusiness', 'HospitalsController@registerBusiness');
+
 //PAtients 
 
 Route::get('/patients', 'PatientsController@patients');
